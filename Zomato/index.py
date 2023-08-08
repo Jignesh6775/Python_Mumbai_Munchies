@@ -9,7 +9,7 @@ def AddaSnack():
     name = input("Enter Snack name:")
     price = int(input("Enter Snack price:"))
     available = input("is this snack available?(yes/no):")
-    with open("invent.json", "r") as file:
+    with open("inventory.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         arr.append(
@@ -20,7 +20,7 @@ def AddaSnack():
                 "available": available
             }
         )
-        with open("invent.json", "w") as file:
+        with open("inventory.json", "w") as file:
             json.dump(arr, file)
     print("============================")
     print("Snacks added to the menu")
@@ -29,13 +29,13 @@ def AddaSnack():
 
 def UpdateAva():
     itemID = int(input("Enter snacks id:"))
-    with open("invent.json", "r") as file:
+    with open("inventory.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
             if item["id"] == itemID:
                 item["available"] = "yes"
-        with open("invent.json", "w") as file:
+        with open("inventory.json", "w") as file:
             json.dump(arr, file)
         print("============================")
         print("Snacks added to the menu")
@@ -44,13 +44,13 @@ def UpdateAva():
 
 def Remove():
     id = int(input("Enter snack id to remove:"))
-    with open("invent.json", "r") as file:
+    with open("inventory.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
             if item["id"] == id:
                 arr.remove(item)
-        with open("invent.json", "w") as file:
+        with open("inventory.json", "w") as file:
             json.dump(arr, file)
 
 def SellSnack(sum):
@@ -58,18 +58,18 @@ def SellSnack(sum):
     foodname=input("Enter food name:")
     name=input("Enter your name:")
     price=0
-    with open("invent.json", "r") as file:
+    with open("inventory.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
             if item["name"] == foodname:
               price=item['price']
               sum+=price  
-    with open("order.json","r")as file:
+    with open("orders.json","r")as file:
         content=file.read()
         arr=json.loads(content)
         arr.append({"orderid":id,"name":name,"price":price,"status":"pending"})
-        with open("order.json", "w") as file:
+        with open("orders.json", "w") as file:
             json.dump(arr, file)
     print("============================")
     print("Snacks sold successfully")
@@ -81,7 +81,7 @@ def getOrders():
     print("============================")
     print("Our Menu")
     print("============================")
-    with open("invent.json", "r") as file:
+    with open("inventory.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
@@ -94,13 +94,13 @@ def getOrders():
 def UpdateStatus():
     id = input("Enter id to update status of snack:")
     change = input("enter that want to change:")
-    with open("order.json", "r") as file:
+    with open("orders.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
             if item["id"] == id:
                 item["status"] = change
-        with open("order.json", "w") as file:
+        with open("orders.json", "w") as file:
             json.dump(arr, file)
     print("============================")
     print("Snacks Status Updated successfully")
@@ -108,7 +108,7 @@ def UpdateStatus():
 
 def FilterByStatus():
     filter=input("Enter The status to get data:")
-    with open("order.json", "r") as file:
+    with open("orders.json", "r") as file:
         content = file.read()
         arr = json.loads(content)
         for item in arr:
