@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Data</title>
+</head>
+<body>
+    <h1>Read Data</h1>
+    {% if data %}
+        <p>Name: {{ data.name }}</p>
+        <p>Age: {{ data.age }}</p>
+        <p>City: {{ data.city }}</p>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+    <a href="{% url 'update' %}">Update</a> |
+    <a href="{% url 'delete' %}">Delete</a>
+</body>
+</html>

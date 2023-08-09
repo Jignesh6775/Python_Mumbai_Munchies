@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Data</title>
+</head>
+<body>
+    <h1>Delete Data</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete all data?</p>
+        <button type="submit">Delete All Data</button>
+    </form>
+</body>
+</html>
