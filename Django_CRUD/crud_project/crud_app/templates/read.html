@@ -5,13 +5,18 @@
 </head>
 <body>
     <h1>Read Data</h1>
-    <ul>
-        {% for entry in data %}
-            <li>{{ entry.name }} - {{ entry.age }} - {{ entry.city }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'create' %}">Create New Entry</a><br>
-    <a href="{% url 'update' %}">Update Entry</a><br>
-    <a href="{% url 'delete' %}">Delete Entry</a><br>
+
+    {% for entry in data %}
+    <div style="border: 1px solid; margin-bottom: 10px; width: 100%; padding:10px">
+            <h4>Name: {{ entry.name }}</h4>
+            <h4>Age: {{ entry.age }}</h4>
+            <h4>City: {{ entry.city }}</h4>
+    </div>
+    {% endfor %}
+    
+    <button style="padding:10px; margin-right: 15px;"><a href="{% url 'create' %}">Create New Entry</a></button>
+    <button style="padding:10px; margin-right: 15px;"><a href="{% url 'update' %}">Update Entry</a></button>
+    <button style="padding:10px; margin-right: 15px;"> <a href="{% url 'delete' %}">Delete Entry</a></button>
+   
 </body>
 </html>

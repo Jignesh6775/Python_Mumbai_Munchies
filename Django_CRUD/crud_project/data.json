@@ -3,5 +3,10 @@
         "name": "Jignesh",
         "age": "28",
         "city": "Rajkot"
+    },
+    {
+        "name": "Shahbaz",
+        "age": "24",
+        "city": "Aurangabad"
     }
 ]
