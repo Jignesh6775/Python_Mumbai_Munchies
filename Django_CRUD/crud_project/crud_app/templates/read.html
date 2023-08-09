@@ -5,14 +5,13 @@
 </head>
 <body>
     <h1>Read Data</h1>
-    {% if data %}
-        <p>Name: {{ data.name }}</p>
-        <p>Age: {{ data.age }}</p>
-        <p>City: {{ data.city }}</p>
-    {% else %}
-        <p>No data available.</p>
-    {% endif %}
-    <a href="{% url 'update' %}">Update</a> |
-    <a href="{% url 'delete' %}">Delete</a>
+    <ul>
+        {% for entry in data %}
+            <li>{{ entry.name }} - {{ entry.age }} - {{ entry.city }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create' %}">Create New Entry</a><br>
+    <a href="{% url 'update' %}">Update Entry</a><br>
+    <a href="{% url 'delete' %}">Delete Entry</a><br>
 </body>
 </html>

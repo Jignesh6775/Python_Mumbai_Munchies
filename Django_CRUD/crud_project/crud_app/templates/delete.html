@@ -7,8 +7,14 @@
     <h1>Delete Data</h1>
     <form method="post">
         {% csrf_token %}
-        <p>Are you sure you want to delete all data?</p>
-        <button type="submit">Delete All Data</button>
+        <label for="index">Select entry to delete:</label>
+        <select name="index">
+            {% for i in data %}
+                <option value="{{ forloop.counter0 }}">{{ i.name }} - {{ i.age }} - {{ i.city }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <button type="submit">Delete Entry</button>
     </form>
 </body>
 </html>
